@@ -1,0 +1,24 @@
+<h2>Lista de Tareas</h2>
+
+<input type="text" placeholder="Buscar...">
+<button>Buscar</button>
+
+<table *ngIf="!error">
+    <tr>
+        <th>Titulo</th>
+        <th>Descripcion</th>
+        <th>Status</th>
+    </tr>
+    <tr *ngFor="let item of todos">
+        <td>{{item.title}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.status}}</td>
+    </tr>
+    <tr *ngIf="empty">
+        <td colspan="3">No se encontraron resultados</td>
+    </tr> 
+</table>
+
+<p class="error" *ngIf="error">Algo salio mal</p>
+
+<div class="overlay" [ngClass]="{'hidden': !isLoading}">Cargando...</div>
